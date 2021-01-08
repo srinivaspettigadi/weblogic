@@ -1,0 +1,13 @@
+
+https://chronicler.tech/simplest-way-to-decrypt-passwords-in-oracle-weblogic-server-12c/
+
+decrypting password 
+=========================
+/apps/opt/weblogic/weblogic103mp6/wlserver_10.3/common/bin/wlst.sh
+
+domain = "/apps/opt/weblogic/config/SSP-DS"
+service = weblogic.security.internal.SerializedSystemIni.getEncryptionService(domain)
+encryption = weblogic.security.internal.encryption.ClearOrEncryptedService(service)
+print encryption.decrypt("{AES}EqxRNv9gMpxyVXQnkGNjUqIk65l0Nvy8EPzMqoahLJE=")
+
+Note --> the required password must be decryped from the same server , it cannot be done from other server if all the paths and domains are same.
